@@ -13,16 +13,18 @@ export class Instruction {
         this.line = line;
         this.type = (this.line.split(" ")[0] as string).toLowerCase();
         this.operands = [];
-
-        for (let op of this.line.split(" ")[1]?.split(",") as string[]) {
-            if (op.startsWith("#")) {
-                this.operands.push(new VMInt(Number.parseInt(op.substring(1))))
-            } else if (Object.keys(vm.registers).includes(op)) {
-                this.operands.push(new VMAddress("register", (vm.registers as any)[op]))
-            } else {
-                this.operands.push(new VMAddress("any", op))
+        if(this.line.split(" ").length > 1) {
+            for (let op of this.line.split(" ")[1]?.split(",") as string[]) {
+                if (op.startsWith("#")) {
+                    this.operands.push(new VMInt(Number.parseInt(op.substring(1))))
+                } else if (Object.keys(vm.registers).includes(op)) {
+                    this.operands.push(new VMAddress("register", (vm.registers as any)[op]))
+                } else {
+                    this.operands.push(new VMAddress("any", op))
+                }
             }
         }
+      
     }
 
     handle(vm : VM) {

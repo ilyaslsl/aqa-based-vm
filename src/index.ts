@@ -6,7 +6,7 @@ let code = fs.readFileSync("tests/code.asm").toString()
 
 vm.parse(code)
 
-while(vm.eip < vm.instructions.length)
+while(vm.eip < vm.instructions.length && !vm.halted)
     vm.step();
 
 

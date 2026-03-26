@@ -18,6 +18,7 @@ export class VM {
     }
     eip = 0;
     labels = {} as {[id : string] : number}
+    halted = false;
 
     constructor() {
         

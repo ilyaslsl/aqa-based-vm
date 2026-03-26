@@ -163,6 +163,10 @@ export const handleJLE = (vm: VM, insn: Instruction) => {
         handleJmp(vm, insn);
 };
 
+export const handleHalt = (vm : VM, insn : Instruction) => {
+    vm.halted = true;
+}
+
 export const HANDLERS = {
     "mov": handleMov,
     "add": handleAdd,
@@ -174,9 +178,10 @@ export const HANDLERS = {
     "bgt": handleJGT,
     "blt": handleJLT,
     "bne": handleJNE,
+    "halt": handleHalt,
 
     // Added stuff (jump if >= and jump if <=)
     "bge": handleJGE,
-    "ble": handleJLE
+    "ble": handleJLE,
     
 }
