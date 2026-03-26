@@ -14,6 +14,7 @@ Almost all opcodes are correctly working, let me know if you find any issue as t
 | add | add two ints and write to a destination register | add R2,R0,R1 
 | sub | same as add but for substracting | sub R2,R0,R1 
 | out | prints a register or a constant to the console | out R0
+| halt | stops vm execution | halt
 | b | jump to a label | b L2
 | cmp | compare two ints and write result to stack | cmp R0, R1
 | beq | takes the last compare value and jump if equal | beq L1
